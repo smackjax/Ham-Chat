@@ -1,0 +1,20 @@
+.copy-channel-url{
+
+}
+
+.description-text{
+    text-align: left;
+}
+
+.channel-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 8px 5px;
+    background-color: #eee;
+    color: #111;
+    box-shadow: 0px 1px 4px 1px #000;
+}

@@ -1,0 +1,17 @@
+.google-sign-in-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0px;
+    background-color: rgb(66, 133, 244);
+    margin: auto;
+    padding: 10px;
+    color: #efefef;
+    font-weight: bold;
+    box-shadow: 0 1px 4px 0px #000;
+}
+
+.google-sign-in-btn i {
+    font-size: 30px;
+    margin-right: 20px;
+}

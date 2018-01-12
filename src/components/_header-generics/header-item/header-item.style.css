@@ -1,0 +1,4 @@
+.header-item-wrapper {
+    /*Required for dropdown*/
+    position: relative;
+}

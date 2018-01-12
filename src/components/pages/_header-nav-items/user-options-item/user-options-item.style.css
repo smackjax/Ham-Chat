@@ -1,0 +1,7 @@
+.user-options-header-item {
+    margin-left: auto;
+}
+.user-options-header-item .header-item-dropdown {
+    position: absolute;
+    right: 0;
+}

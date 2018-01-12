@@ -1,0 +1,30 @@
+.channel-error-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.error-msg{
+    margin-top: 10px;
+}
+.channel-error-wrapper button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 15px auto ;
+    padding: 5px;
+    border-width: 0px;
+    color: #efefef;
+    box-shadow: 0 1px 4px 0px #000;
+}
+.channel-error-wrapper i {
+    margin-right: 10px;
+}
+
+.go-back-btn{
+    background-color: rgb(88, 116, 158);
+}
+.remove-from-recent-btn{
+    background-color: rgb(220, 81, 81);
+
+}

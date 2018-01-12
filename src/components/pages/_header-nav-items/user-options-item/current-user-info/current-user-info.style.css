@@ -1,0 +1,6 @@
+.current-user-info {
+border-bottom: 1px solid #efefef;
+}
+.current-user-info .icon {
+    margin-right: 10px;
+}

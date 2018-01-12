@@ -1,0 +1,10 @@
+.login-page .error-message {
+    display: flex;
+    width: 98%;
+    max-width: 350px;
+    margin: 10px auto;
+    border: 1px solid #efefef;
+    background-color: rgba(87, 76, 76, 0.8);
+    padding: 15px;
+    color: #efefef;
+}

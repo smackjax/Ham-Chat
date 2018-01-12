@@ -1,0 +1,29 @@
+.channel-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    
+    width: 95%;
+    max-width: 330px;
+    
+    margin: 5px auto; 
+    padding: 10px;
+
+    background-color: rgb(72, 112, 167);
+    color: #efefef;
+    text-decoration: none;
+
+    box-shadow: 0 2px 3px 0px #000;
+}
+
+.channel-item .channel-name {
+    margin-left: 10px;
+}
+.channel-item .edit-span {
+    margin-left: auto;
+    color:  rgba(21, 45, 77, 0);
+}
+.channel-item:hover .edit-span {
+    color: rgba(255,255,255,.5);
+}

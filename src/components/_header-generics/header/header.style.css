@@ -1,0 +1,10 @@
+.main-header {
+}
+.header-content{
+    display: flex; 
+    flex-direction: row;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    color: #efefef;
+}

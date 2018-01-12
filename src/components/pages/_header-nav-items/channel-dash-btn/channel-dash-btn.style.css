@@ -1,0 +1,9 @@
+.channel-dash-nav-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: auto;
+    min-width: 50px;
+    border: 0;
+
+}
