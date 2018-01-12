@@ -87,15 +87,18 @@ export const onDeleteMessage=(channelId, callback)=>{
 }
 
 export const sendMessage=(channelId, message)=>{
-    const userId = auth().currentUser.uid;
+    const user = auth().currentUser;
+    const userId = user.uid;
     const listRef = getChannelRef(channelId).child("messages");
 
     const newKey = listRef.push().key;
 
+    const identity = user.displayName || user.email.split[0] || "Sneaky Pete";
     const newMessage = {
         key: newKey,
         senderId: userId,
-        text: message
+        text: message,
+        displayName: identity
     }
     
     const updates = {

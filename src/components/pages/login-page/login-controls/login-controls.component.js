@@ -52,6 +52,7 @@ const LoginControls = (props)=>{
                 type="text" 
                 name="displayName"
                 autoComplete="display-name"
+                maxLength="25"
                 required
                 value={props.displayNameVal}
                 onChange={handleDisplayName}

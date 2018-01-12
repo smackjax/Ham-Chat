@@ -4,7 +4,7 @@ import './copy-channel.style.css';
 
 const CopyChannel = (props)=>{
     const channelLink = 
-        `${window.location.origin}/${props.channel.key}`;
+        `${window.location.origin}/channels/${props.channel.key}`;
     
     return (
         <div className="copy-channel-url">

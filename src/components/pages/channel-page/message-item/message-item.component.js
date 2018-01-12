@@ -4,10 +4,11 @@ import { auth } from '../../firebase';
 import './message-item.style.css';
 
 export default (props)=>{
-
-    const {text, senderId/*, key*/} = props.msgObj;
+    const {text, senderId, displayName} = props.msgObj;
   
     const user = auth().currentUser;
+
+    const senderIdentity = displayName || "Sneaky Pete";
     const myMessage = (senderId === user.uid) ? 
         "my-message" : "";
 
@@ -19,7 +20,7 @@ export default (props)=>{
             <div className="message-text-wrapper">
                 
                 <div className="sender-text">
-                    { user.displayName || user.email.split('@')[0] || "Sir Sneaky"}
+                    { senderIdentity }
                 </div>
 
                 <div className="message-text">
