@@ -1,4 +1,5 @@
 import React from 'react';
+import * as colors from '../../_colors';
 
 export default ()=>{
     const loadingStyle={
@@ -8,7 +9,7 @@ export default ()=>{
         top: "30%",
         padding: "10px",
         fontSize: "24px",
-        color: "rgb(26, 102, 173)",
+        color: colors.primary,
         backgroundColor: "#fafafa",
         borderRadius: "3px",
         boxShadow: "0 1px 4px -1px #222",

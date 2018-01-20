@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import LoginInput from '../_login-input/login-input.component';
+import * as colors from '../../_colors';
 import './login-controls.style.css';
 
 const LoginControls = (props)=>{
@@ -43,7 +44,7 @@ const LoginControls = (props)=>{
             required
             value={props.emailVal}
             onChange={handleEmail}
-            placeholder="email"
+            placeholder="Email"
             className="email"/>
 
             { // Only rendered if new user
@@ -56,7 +57,7 @@ const LoginControls = (props)=>{
                 required
                 value={props.displayNameVal}
                 onChange={handleDisplayName}
-                placeholder="display name"
+                placeholder="Display name"
                 className="password-confirm"/>
             )}
             
@@ -67,7 +68,7 @@ const LoginControls = (props)=>{
             required
             value={props.passwordVal}
             onChange={handlePassword}
-            placeholder="password"
+            placeholder="Password"
             className="password"/>
 
             { // Only rendered if new user
@@ -79,26 +80,34 @@ const LoginControls = (props)=>{
                 required
                 value={props.passwordConfirmVal}
                 onChange={handlePasswordConfirm}
-                placeholder="confirm password"
+                placeholder="Confirm password"
                 className="password-confirm"/>
             )}
+            
+            <button
+            type="submit"
+            style={{
+                backgroundColor: colors.primary,
+                marginTop: "10px"
+            }}
+            className="login-btn"
+            >
 
-            <div className="login-btns-wrapper">    
-                
-                <input 
-                type="submit"
-                className="login-btn"
-                value={props.newUser ? "Create new" : "Sign in"}
-                />
+                <i className="fa fa-check" />
+                {props.newUser ? "Create new" : "Sign in"}
+            </button>
 
-                <button type="button"
-                className="switch-user-type-btn"
-                onClick={props.toggleUserType}
-                >
-                    {props.newUser ? "Existing user" : "New user"}
-                </button>
+            <button type="button"
+            style={{
+                color: colors.primary,
+                marginTop: "10px"
+            }}
+            className="switch-user-type-btn"
+            onClick={props.toggleUserType}
+            >
+                {props.newUser ? "Existing user" : "New user"}
+            </button>
 
-            </div>
 
         </form>
     )

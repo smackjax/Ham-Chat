@@ -10,8 +10,8 @@ const HeaderItemNavBtn =  (props)=>{
 
     const btnStyle = {
         ...styles,
-        backgroundColor: open ? colors.light : colors.dark,
-        color: "#efefef" 
+        backgroundColor: open ? colors.darkGray : colors.primary,
+        color: colors.lightText
     }
 
     return (

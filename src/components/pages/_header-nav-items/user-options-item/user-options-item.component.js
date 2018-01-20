@@ -8,6 +8,8 @@ import {
 } from '../header-generics';
 import CurrentUserInfo from './current-user-info/current-user-info.component';
 import SignOutBtn from './sign-out-btn/sign-out-btn.component';
+
+import * as colors from '../_colors';
 import './user-options-item.style.css';
 
 const UserOptionsHeaderItem = (props)=>{
@@ -23,26 +25,45 @@ const UserOptionsHeaderItem = (props)=>{
         auth().signOut();
     }
 
+
+
     return (
         <HeaderItem
+        style={{
+            backgroundColor: open ? colors.darkGray : "" 
+        }}
         className="user-options-header-item"
         >
             <NavBtn
+                style={{
+
+                }}
                 open={open}
                 onClick={handleToggle}
             >
-                <span>
-                    <i className="fa fa-user"></i>
-                </span>
+                <i 
+                style={{ marginRight: open ? "8px" : "" }}
+                className="fa fa-user" />
+                { open && (
+                    <span>
+                        { // If open, get user display name
+                        currentUser.displayName || 
+                        currentUser.email.split("@")[0] || 
+                        "Sneaky Pete"
+                        }
+                    </span>
+                )}
             </NavBtn>
 
             <Dropdown 
             open={open}
             >
-                <CurrentUserInfo 
-                currentUser={currentUser}
-                /> 
-                <SignOutBtn 
+                <SignOutBtn
+                style={{
+                    marginTop: "10px",
+                    backgroundColor: colors.primary,            
+                }}
+                
                 handleSignOut={handleSignOut}/>
             </Dropdown>
         </HeaderItem>

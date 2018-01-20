@@ -7,7 +7,7 @@ const HeaderItemDropdown = (props)=>{
     return (
         <div 
         style={{
-            backgroundColor: colors.light,
+            backgroundColor: colors.darkGray,
             display: props.open ? "flex" : "none"
         }}
         className="header-item-dropdown">

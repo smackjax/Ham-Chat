@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { auth } from '../../firebase';
-
+import Background from '../_background/background.component.js';
 import Logo from '../../_logo/logo.component';
 import LoginControls from './login-controls/login-controls.component';
 import GoogleSignIn from './google-sign-in/google-sign-in.component';
 
+import * as colors from '../_colors';
 import './login-page.style.css';
 
 
@@ -94,8 +95,20 @@ class LoginPage extends React.Component {
             auth()
             .signInWithEmailAndPassword(emailVal, passwordVal)
             .catch(err=>{
-                console.log("Error signing in: ", err.message);
-                this.setError("Failed. Please check your email, password, and connection.");
+                console.log("Error: ", err.message);
+
+                // Determines error message
+                const code = err.code;
+                const msg = 
+                    code === "auth/user-not-found" ? 
+                        "Could not find user with that email" :
+                    code === "auth/invalid-email" ? 
+                        "Email address invalid" :
+                    code === "auth/wrong-password" ? 
+                        "Please check your password" : 
+                    "Error. Please try again.";
+                    
+                this.setError(msg);
             });
         }
 
@@ -110,13 +123,39 @@ class LoginPage extends React.Component {
             <div 
             className="login-page"
             >
-                <div style={{marginBottom: "25px"}}>
+                <Background color={colors.lightPrimary} />
+
+                <div 
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "140px",
+                    height: "140px",
+                    margin: "10px auto",
+                    borderRadius: "3000px",
+                    backgroundColor: "#efefef",
+                    border: "3px solid #efefef",
+                    borderColor: colors.primary
+                }}
+                >
                     <Logo />
                 </div>
 
                 { // Renders error message, if present
                 this.state.errorMsg && (
-                    <div className="error-message">
+                    <div 
+                    style={{
+                        width: "85%",
+                        maxWidth: "300px",
+                        margin: "15px auto",
+                        padding: "12px",
+                        backgroundColor: "#efefef",
+                        color: colors.primary,
+                        border: "1px solid #efefef",
+                        borderColor: colors.primary
+                    }}
+                    >
                         { this.state.errorMsg }
                     </div>
                 )}
@@ -141,6 +180,7 @@ class LoginPage extends React.Component {
                 />
 
                 <GoogleSignIn />
+
             </div>
         )
     }

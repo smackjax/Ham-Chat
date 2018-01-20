@@ -6,8 +6,8 @@ export default (props)=>{
     const styles = props.style || {};
     const btnStyle ={
         ...styles,
-        backgroundColor: colors.dark,
-        color: "#efefef"
+        backgroundColor: colors.primary,
+        color: colors.lightText
     };
 
     return (

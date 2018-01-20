@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom'
 import { channels } from '../../api';
 
-import {
-    Header, withOpenIdControls
-} from '../../header-generics';
+import { NewChannel, UserOptions } from '../../_expandable-btns';
+
+
+import { Header } from '../../header-generics';
 
 import {
     DashNavItem,
     UserNavItem
 } from '../../_header-nav-items';
+import * as colors from '../../_colors';
 
 import './dash-header.style.css';
 
@@ -19,11 +21,11 @@ import './dash-header.style.css';
 class DashHeader extends React.Component {
 
     state={
-        creatingChannel: false
+        creatingChannel: null
     }
 
 
-    handleCreateChannel=(newName)=>{
+    handleNewChannel=(newName)=>{
         this.setState({ creatingChannel: true })
 
         channels.createNewChannel(newName)
@@ -45,18 +47,27 @@ class DashHeader extends React.Component {
         return(
             <Header>
                 
-                <DashNavItem
-                    loading={this.state.creatingChannel}
-                    openId={this.props.openId}
-                    handleToggle={this.props.toggleOpenId}
-                    handleNewChannel={this.handleCreateChannel}
+                <NewChannel
+                creatingChannel={ this.state.creatingChannel }
+                handleNewChannel={this.handleNewChannel}
                 />
 
-                <UserNavItem 
-                    openId={this.props.openId}
-                    handleToggle={this.props.toggleOpenId}
-                />
-                
+                <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    fontSize: "20px",
+                    width: "50%",
+                    
+                    color: "rgba(20,20,20,1)"
+                }}
+                >
+                Channels
+                </div>
+
+                <UserOptions />
+
             </Header>
         )
     }
@@ -65,10 +76,6 @@ class DashHeader extends React.Component {
 
 DashHeader.propTypes={
     history: PropTypes.object.isRequired,
-    openId: PropTypes.string.isRequired,
-    toggleOpenId: PropTypes.func.isRequired,
-    clearOpenId: PropTypes.func.isRequired
 }
 
-export default withRouter(withOpenIdControls(DashHeader));
-
+export default withRouter( DashHeader );
