@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as colors from '../../_colors';
+import actionBtnStyles from '../../../_action-btn/action-btn.styles';
 import './channel-error.style.css';
 
 const ChannelError = (props)=>{
@@ -13,7 +15,7 @@ const ChannelError = (props)=>{
         backgroundColor: "#fafafa"
     }
     const goBack=()=>{
-        props.history.goBack();
+        props.history.push('/channels');
     }
     return (
         <div 
@@ -31,14 +33,21 @@ const ChannelError = (props)=>{
 
             <button 
             onClick={goBack}
+            style={{
+                ...actionBtnStyles
+            }}
             className="go-back-btn"
             >
                 <i className="fa fa-chevron-left"></i>
-                <span>Go back?</span>
+                <span>Go to dash?</span>
             </button>
             <h3>OR</h3>
             <button 
             className="remove-from-recent-btn"
+            style={{
+                ...actionBtnStyles,
+                backgroundColor: "rgb(214,46,46)"
+            }}
             onClick={props.handleRemove}>
                 <i className="fa fa-trash"></i>
                 <span>Remove channel?</span>

@@ -1,5 +1,5 @@
 {
-  "short_name": "Ham",
+  "short_name": "Ham Chat",
   "name": "Ham Chat",
   "icons": [
     {
@@ -30,6 +30,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#25587b",
-  "background_color": "#52bedf"
+  "theme_color": "#dc5f69",
+  "background_color": "#e6e6e6"
 }

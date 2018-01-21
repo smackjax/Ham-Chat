@@ -135,7 +135,7 @@ export default  class ChannelPage extends React.Component{
     }
 
     render(){
-        
+
         if(this.state.channelError) {
             const id = this.props.match.params.channelName;
             return (
