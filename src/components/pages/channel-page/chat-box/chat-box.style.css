@@ -1,4 +1,5 @@
 .chat-box-wrapper{
+    transition: height .15s ease-out;
     position: fixed;
     bottom: 0pc; 
     left: 50%;
@@ -7,28 +8,34 @@
     flex-direction: row;
     width: 100%;
     max-width: 400px;
-    height: 95px;
+
     margin: 5px auto 0;
 
     box-shadow: 0 1px 4px 0px rgb(31, 31, 31);
 }
 
-.chat-text-area{
+.chat-text-area {
+    transition: height .15s ease-out;
+    height: 50px;
     resize: none;
     width: 100%;
     padding: 8px;
     border-width: 0;
 }
 
+.chat-text-area:focus{
+    height: 120px;
+}
+
+
 .chat-submit-btn{
     border-width: 0;
     padding: 10px;
-    background: rgb(26, 102, 173);
     cursor: pointer;
     color: #efefef;
 }
 
 .chat-submit-btn:hover {
     background: rgba(138, 252, 218, 0.932);
-    color: #222;
+    color: rgb(245, 165, 140);
 }

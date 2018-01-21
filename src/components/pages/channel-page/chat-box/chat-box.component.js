@@ -1,4 +1,5 @@
 import React from 'react';
+import * as colors from '../../_colors';
 import './chat-box.style.css';
 
 export default class ChatBox extends React.Component {
@@ -35,20 +36,26 @@ export default class ChatBox extends React.Component {
             onKeyDown={this.checkEnter}
             className="chat-box-wrapper"
             >
-                <textarea
+                <textarea  
                     className="chat-text-area"
                     name="chatText"
-                    rows="3"
                     resizable="no"
+                    required
                     onChange={this.handleMsg}
                     value={this.state.newMsg}
                     placeholder="Type message here..."
                 />
 
-                <input type="submit"
+                <button type="submit"
+                style={{
+                    backgroundColor: colors.primary,
+                    minWidth: "45px"
+                }}
                 value="Send"
                 className="chat-submit-btn"
-                />
+                >
+                    <i className="fa fa-paper-plane"/>
+                </button>
             </form>
         )
     }

@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { auth } from '../../../firebase';
 import ViewChannelHeader from '../channel-header/channel-header.component';
 import ChatBox from '../chat-box/chat-box.component';
 import Message from '../message-item/message-item.component';
 import './view-channel.style.css';
 
 const ViewChannel = (props) => { 
-  console.log(props.channel);
-
+  const user = auth().currentUser;
   return (
-    <div className="view-channel page">
+    <div
+    style={{
+      marginTop: "70px"
+    }}
+    className="view-channel page">
       
       <ViewChannelHeader 
       channel={props.channel}
@@ -19,6 +23,7 @@ const ViewChannel = (props) => {
       return (
         <Message
         key={msgObj.key}
+        user={user}
         msgObj={msgObj}
         handleDelete={this.deleteMessage}
         />

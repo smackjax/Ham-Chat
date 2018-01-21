@@ -4,13 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { channels, userActions, getUser } from '../../api';
 import Header from '../../_header/header.component';
 
-
-// import {
-//     ChannelViewItem,
-//     ChannelDashBtn,
-//     UserNavItem
-// } from '../../_header-nav-items';
-
+import { ChannelOptions } from '../../_expandable-btns';
+import CopySuccessAlert from './success-alert/success-alert.component';
+import CopyModal from './copy-modal/copy-modal.component';
 import './channel-header.style.css';
 
 class ViewChannelHeader extends React.Component {
@@ -18,7 +14,11 @@ class ViewChannelHeader extends React.Component {
     state={
         ownChannel: false,
         emailing: false,
-        deleting: false
+        deleting: false,
+        copyComplete: false,
+
+        copyModalOpen: false,
+        copyLink: ""
     }
 
     componentDidMount(){
@@ -29,9 +29,6 @@ class ViewChannelHeader extends React.Component {
         }
     }
 
-    handleEmail=(address)=>{
-        console.log("Email to: ", address);
-    }
     handleDelete=()=>{
         const channelKey = this.props.channel.key;
         channels.deleteChannel(channelKey)
@@ -46,31 +43,84 @@ class ViewChannelHeader extends React.Component {
             alert("Could not delete channel.")
         })
     }
+
+    goBack=()=>{
+        this.props.history.push("/channels");
+    }
+
+    handleCopySuccess=()=>{
+        this.setState({ copyComplete: true });
+    }
+    handleCopyFail=(copyLink)=>{
+        this.setState({
+            copyLink,
+            copyModalOpen: true
+        });
+    }
+    handleAlertClose=()=>{
+        this.setState({ copyComplete: false });
+    }
     
+    handleCloseModal = ()=>{
+        this.setState({
+            copyModalOpen: false,
+            copyLink: ""
+        })
+    }
 
     render(){
-
         return (
             <Header
-            className="channel-page-nav-header"
-            >
-                {/* <ChannelViewItem
+            style={{
+                position: "fixed",
+                width: "100%",
+                top: "0"
+            }}>
+
+                <button
+                style={{
+                    height: "95%",
+                    padding: "5px 10px",
+                    background: "rgba(255,255,255,.0)",
+                    borderRight: "1px solid rgba(255,255,255,.8)",
+                    color: "rgba(255,255,255,.8)"
+                }}
+                onClick={this.goBack}
+                >
+                    <i className="fa fa-chevron-left" />
+                </button>
+
+                <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    width:"100%",
+                    marginLeft: "15px",
+                    color: "rgba(0,0,0,.9)"
+                }}
+                >
+                    {this.props.channel.name}
+                </div>
+
+                <ChannelOptions
                 channel={this.props.channel}
-                ownChannel={this.state.ownChannel}
-                handleEmail={this.handleEmail}
-                handleDelete={this.handleDelete}
-
-                openId={this.props.openId}
-                handleToggle={this.props.toggleOpenId}
+                handleCopySuccess={this.handleCopySuccess}
+                handleCopyFail={this.handleCopyFail}
                 />
-                
-                <ChannelDashBtn />
 
-                <UserNavItem 
-                openId={this.props.openId}
-                handleToggle={this.props.toggleOpenId}
-                /> */}
+                <CopyModal 
+                open={this.state.copyModalOpen}
+                copyLink={this.state.copyLink}
+                handleClose={this.handleCloseModal}
+                />
 
+                { // Renders copy success message
+                this.state.copyComplete && (
+                    <CopySuccessAlert 
+                    handleClose={this.handleAlertClose}
+                    />
+                )}
 
             </Header>
         )
@@ -79,9 +129,10 @@ class ViewChannelHeader extends React.Component {
 
 ViewChannelHeader.propTypes = {
     history: PropTypes.object.isRequired,
-    channel: PropTypes.object.isRequired,
-    openId: PropTypes.string.isRequired,
-    toggleOpenId: PropTypes.func.isRequired
+    channel: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        key: PropTypes.string.isRequired
+    }).isRequired,
 }
 
 export default withRouter( ViewChannelHeader );

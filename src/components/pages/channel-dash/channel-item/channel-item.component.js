@@ -48,8 +48,10 @@ class ChannelItem extends React.Component {
                     </div>
                     
                     <div
+                    style={{
+                        fontWeight: isOwned ? "bold" : ""
+                    }}
                     className="channel-name">
-                        {isOwned ? "*" : ""} 
                         {this.props.channel.name}
                     </div>
                 </NavLink>

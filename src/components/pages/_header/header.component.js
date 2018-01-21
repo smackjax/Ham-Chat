@@ -3,6 +3,7 @@ import './header.style.css';
 
 
 const Header = (props)=>{
+
     const propsStyles = 
         props.style || {};
 
@@ -12,14 +13,14 @@ const Header = (props)=>{
     return (
         <header
         className={"main-header " + (props.className || "")}
+        style={ propsStyles }
         >
             <div
             style={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                padding: "5px",
-                ...propsStyles
+                padding: "5px"
             }}
             className={ "header-content" + propsClassName }
             >
