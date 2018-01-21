@@ -1,2 +1,11 @@
-import LoginInput from '../../_login-input/login-input.component';
-export default LoginInput;
+import React from 'react';
+import './login-input.style.css';
+
+export default (props)=>{
+    return (
+        <input 
+        {...props}
+        className={"login-input " + (props.className || "")}
+        />
+    )
+}

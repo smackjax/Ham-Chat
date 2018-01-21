@@ -53,12 +53,13 @@ class ExpandableUserOptions extends React.Component {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    
+                    paddingLeft: isOpen ? "" : "6px", 
+
                     minWidth: startSize.width,
                     minHeight: startSize.height,
                     
                     color: colors.lightText,
-
+                    
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                 }}
@@ -87,6 +88,7 @@ class ExpandableUserOptions extends React.Component {
                 <button
                 style={{
                     ...actionBtnStyles,
+                    minWidth: "120px",
                     whiteSpace: "nowrap",
                     overflow: "hidden",
                     marginTop: "10px",

@@ -22,7 +22,7 @@ const CreateChannel =  (props)=>{
             id="create-new-channel"
             name="newChannelName"
             required
-            maxLength="25"
+            maxLength="20"
             placeholder="Channel Name"
             autoComplete="off"
             className="create-channel-input"
@@ -30,7 +30,10 @@ const CreateChannel =  (props)=>{
 
             <button
             type="submit"
-            style={actionBtnStyles}
+            style={{
+                ...actionBtnStyles,
+                marginTop: "5px"
+            }}
             >
                 <i className="fa fa-plus"></i>
             </button>

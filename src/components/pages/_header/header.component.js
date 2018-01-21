@@ -1,5 +1,4 @@
 import React from 'react';
-import * as colors from '../colors';
 import './header.style.css';
 
 

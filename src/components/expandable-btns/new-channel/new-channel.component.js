@@ -5,7 +5,6 @@ import ExpandableIconWrapper from '../_expandable-icon-wrapper/wrapper.component
 import Backdrop from '../_backdrop/backdrop.component';
 import CreateChannelControls from './create-channel-controls/create-channel-controls.component';
 
-import actionBtnStyles from '../../_action-btn/action-btn.styles';
 import startSize from '../start-size';
 import * as colors from '../../../_colors';
 
@@ -39,7 +38,10 @@ class ExpandableNewChannel extends React.Component {
                     display: "flex",
                     flexDirection: "row",
                     alignItems: "center",
-                    
+
+                    fontSize: "18px",
+                    paddingLeft: isOpen ? "" : "3px", 
+
                     minWidth: startSize.width,
                     minHeight: startSize.height,
                     

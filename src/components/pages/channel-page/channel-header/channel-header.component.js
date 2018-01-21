@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { channels, userActions, getUser } from '../../api';
-import { Header, withOpenIdControls } from '../../header-generics';
-import {
-    ChannelViewItem,
-    ChannelDashBtn,
-    UserNavItem
-} from '../../_header-nav-items';
+import Header from '../../_header/header.component';
+
+
+// import {
+//     ChannelViewItem,
+//     ChannelDashBtn,
+//     UserNavItem
+// } from '../../_header-nav-items';
 
 import './channel-header.style.css';
 
@@ -52,7 +54,7 @@ class ViewChannelHeader extends React.Component {
             <Header
             className="channel-page-nav-header"
             >
-                <ChannelViewItem
+                {/* <ChannelViewItem
                 channel={this.props.channel}
                 ownChannel={this.state.ownChannel}
                 handleEmail={this.handleEmail}
@@ -67,7 +69,7 @@ class ViewChannelHeader extends React.Component {
                 <UserNavItem 
                 openId={this.props.openId}
                 handleToggle={this.props.toggleOpenId}
-                />
+                /> */}
 
 
             </Header>
@@ -82,4 +84,4 @@ ViewChannelHeader.propTypes = {
     toggleOpenId: PropTypes.func.isRequired
 }
 
-export default withRouter( withOpenIdControls(ViewChannelHeader) );
+export default withRouter( ViewChannelHeader );

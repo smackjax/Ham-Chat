@@ -11,6 +11,7 @@ export const addChannelToRecent=(newChannel)=>{
         .child("channels")
         .child(newChannel.key)
         .set({
+            creatorId: newChannel.creatorId,
             key: newChannel.key, 
             name: newChannel.name || "(Anonymous)"
         })

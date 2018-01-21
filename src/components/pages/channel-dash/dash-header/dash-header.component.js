@@ -4,19 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { channels } from '../../api';
 
 import { NewChannel, UserOptions } from '../../_expandable-btns';
-
-
-import { Header } from '../../header-generics';
-
-import {
-    DashNavItem,
-    UserNavItem
-} from '../../_header-nav-items';
-import * as colors from '../../_colors';
+import Header from '../../_header/header.component';
 
 import './dash-header.style.css';
-
-
 
 class DashHeader extends React.Component {
 

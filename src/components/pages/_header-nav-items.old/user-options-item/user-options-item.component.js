@@ -6,7 +6,6 @@ import {
     HeaderItemNavBtn as NavBtn,
     Dropdown
 } from '../header-generics';
-import CurrentUserInfo from './current-user-info/current-user-info.component';
 import SignOutBtn from './sign-out-btn/sign-out-btn.component';
 
 import * as colors from '../_colors';

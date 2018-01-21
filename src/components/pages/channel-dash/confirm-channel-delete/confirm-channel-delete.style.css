@@ -1,0 +1,24 @@
+.confirm-delete-modal {
+
+}
+.confirm-delete-modal .warning-header {
+    border-radius: 5px;
+    padding: 10px;
+}
+.confirm-delete-modal .warning-body {
+    margin: 10px 0;
+    text-align: center
+
+}
+.confirm-delete-modal .btn-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.confirm-delete-modal .btn-container button{
+    width: 90%;
+    max-width: 120px;
+    text-align: center;
+    margin: 5px;
+}
