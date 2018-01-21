@@ -61,7 +61,7 @@ class ExpandableIconWrapper extends React.Component {
                 maxWidth: isOpen ? this.state.maxWidth : startSize.maxWidth,
                 maxHeight: isOpen ? this.state.maxHeight : startSize.maxHeight,
                 backgroundColor: isOpen ? "rgba(33,33,33,1)" : actionBtnStyles.backgroundColor,
-                zIndex: "200",
+                zIndex: isOpen ? "500" : "200",
             }
 
         const propStyles = 
