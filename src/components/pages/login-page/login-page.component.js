@@ -7,6 +7,8 @@ import Logo from '../../_logo/logo.component';
 import LoginControls from './login-controls/login-controls.component';
 import GoogleSignIn from './google-sign-in/google-sign-in.component';
 
+import LoadingSpinner from '../../_loading-spinner/loading-spinner.component';
+
 import * as colors from '../_colors';
 import './login-page.style.css';
 
@@ -19,6 +21,9 @@ class LoginPage extends React.Component {
         displayNameVal: "",
         passwordVal: "",
         passwordConfirmVal: "",
+
+        // Displays loading spinner
+        signingIn: false
     }
 
     toggleUserType=()=>{
@@ -67,16 +72,14 @@ class LoginPage extends React.Component {
             passwordConfirmVal 
         } = this.state;
 
+        this.setSigningIn(true);
+
         if(newUser){
             if(passwordVal.length < 5){
-                return this.setState({
-                    errorMsg: "Password must be at least 5 characters"
-                });
+                return this.setError("Password must be at least 5 characters");
             }
             if(passwordVal !== passwordConfirmVal){
-                return this.setState({
-                    errorMsg: "Passwords don't match"
-                })
+                return this.setError("Passwords don't match")
             }
 
             // Create user with info
@@ -89,7 +92,11 @@ class LoginPage extends React.Component {
             })
             .catch(err=>{
                 console.log("Couldn't create user: ", err);
+                this.setState("Sorry, there was problem. Please try again.")
             })
+            .then(always=>{
+                this.setSigningIn(false);
+            });
         } else {
             // If not a new user
             auth()
@@ -109,14 +116,23 @@ class LoginPage extends React.Component {
                     "Error. Please try again.";
                     
                 this.setError(msg);
+            })
+            .then(always=>{
+                this.setSigningIn(false);
             });
         }
+    }
 
+    setSigningIn=(signingIn)=>{
+        this.setState({
+            signingIn
+        })
     }
 
     setError=(errorMsg)=>{
         this.setState({ errorMsg });
     }
+
     render(){
 
         return (
@@ -160,26 +176,37 @@ class LoginPage extends React.Component {
                     </div>
                 )}
 
-                <LoginControls 
-                {...this.state}
-                handleEmail={this.handleEmail}
-                handleDisplayName={this.handleDisplayName}
-                handlePassword={this.handlePassword}
-                handlePasswordConfirm={this.handlePasswordConfirm}
-                toggleUserType={this.toggleUserType}
-                confirmSubmit={this.handleSubmit}
-                />
+                { this.state.signingIn && (
+                  <LoadingSpinner />  
+                )}
 
-                <hr 
-                style={{
-                    margin: "25px auto", 
-                    width: "85%", 
-                    borderColor: "#efefef", 
-                    borderTopWidth: "0px"
-                }}
-                />
+                { !this.state.signingIn && ( 
+                    <LoginControls 
+                    {...this.state} 
+                    handleEmail={this.handleEmail}
+                    handleDisplayName={this.handleDisplayName}
+                    handlePassword={this.handlePassword}
+                    handlePasswordConfirm={this.handlePasswordConfirm}
+                    toggleUserType={this.toggleUserType}
+                    confirmSubmit={this.handleSubmit}
+                    />
+                )}
 
-                <GoogleSignIn />
+                { !this.state.signingIn && ( 
+                    <hr 
+                    style={{
+                        margin: "25px auto", 
+                        width: "85%", 
+                        borderColor: "#efefef", 
+                        borderTopWidth: "0px"
+                    }}   
+                    />
+                )}
+
+                { !this.state.signingIn && (
+                    <GoogleSignIn />
+                )}
+                
 
             </div>
         )
